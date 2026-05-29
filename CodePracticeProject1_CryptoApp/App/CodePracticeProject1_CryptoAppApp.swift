@@ -13,7 +13,21 @@ struct CodePracticeProject1_CryptoAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
+
+
+/*
+ 
+ 1 Coin List
+ 2 Coin Details
+ 3 Fav
+ 4 Settings
+ 5 Search 
+ 
+ 
+ 
+ 
+ */
