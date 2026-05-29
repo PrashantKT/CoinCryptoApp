@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		10A150DE2FC87BCF00F4C8E5 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		10A1508C2FC8614600F4C8E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		10A1507C2FC8614400F4C8E5 /* CodePracticeProject1_CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodePracticeProject1_CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A1508B2FC8614600F4C8E5 /* CodePracticeProject1_CryptoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodePracticeProject1_CryptoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A150952FC8614600F4C8E5 /* CodePracticeProject1_CryptoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodePracticeProject1_CryptoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +84,7 @@
 				10A1508E2FC8614600F4C8E5 /* CodePracticeProject1_CryptoAppTests */,
 				10A150982FC8614600F4C8E5 /* CodePracticeProject1_CryptoAppUITests */,
 				10A1507D2FC8614400F4C8E5 /* Products */,
+				10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +201,8 @@
 			);
 			mainGroup = 10A150732FC8614400F4C8E5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 10A1507D2FC8614400F4C8E5 /* Products */;
 			projectDirPath = "";
@@ -212,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A150DE2FC87BCF00F4C8E5 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +280,7 @@
 /* Begin XCBuildConfiguration section */
 		10A1509D2FC8614600F4C8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -392,6 +402,7 @@
 		};
 		10A150A02FC8614600F4C8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -400,6 +411,7 @@
 				DEVELOPMENT_TEAM = 23S6UWXUWC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CodePracticeProject1-CryptoApp-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,6 +444,7 @@
 				DEVELOPMENT_TEAM = 23S6UWXUWC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CodePracticeProject1-CryptoApp-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,6 +469,7 @@
 		};
 		10A150A32FC8614600F4C8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -500,6 +514,7 @@
 		};
 		10A150A62FC8614600F4C8E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10A150DD2FC87BCF00F4C8E5 /* Debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
