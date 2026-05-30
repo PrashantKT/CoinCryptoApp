@@ -22,13 +22,13 @@ struct HomeView: View {
        
         TabView(selection: $currentTab) {
             Tab("Coin List", systemImage: "bitcoinsign.ring.dashed", value: HomeTab.coinList) {
-//                CoinListView()
-                Text("Coin list")
+                CoinListView()
+//                Text("Coin list")
             
             }
            
             Tab("Favorite", systemImage: "heart", value: HomeTab.favorite) {
-                Text("Fav")
+                FavoriteList()
 
             }
             Tab("Settings", systemImage: "gear", value: HomeTab.settings) {

@@ -15,6 +15,7 @@ struct CodePracticeProject1_CryptoAppApp: App {
         WindowGroup {
             HomeView()
         }
+        .modelContainer(DatabaseService.shared.container)
     }
 }
 

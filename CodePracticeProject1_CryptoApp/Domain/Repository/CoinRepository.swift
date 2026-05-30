@@ -12,3 +12,15 @@ protocol CoinRepositoryType {
 protocol CoinSearchRepositoryType {
     func fetchCoinList(searchText: String) async throws -> [Coin]
 }
+
+protocol CoinDetailsRepositoryType {
+    func fetchCoinDetails(id: String) async throws -> CoinDetails
+}
+
+@MainActor
+protocol FavCoinRepositoryType {
+    func addCoinToFav(coin: FavCoin) async throws
+    func removeCoinFromFav(id: String) async throws
+    func fetchFavCoinList() async throws -> [FavCoin]
+    func isFavorite(id: String) throws -> Bool
+}

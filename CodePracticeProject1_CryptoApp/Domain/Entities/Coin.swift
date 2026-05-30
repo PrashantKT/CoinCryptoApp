@@ -6,7 +6,7 @@
 //
 
 struct Coin: Identifiable {
-    var id: String {return name }
+    var id: String
     var name: String
     var price: Double
     var symbol: String

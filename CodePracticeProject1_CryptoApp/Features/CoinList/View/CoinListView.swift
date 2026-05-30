@@ -13,22 +13,29 @@ struct CoinListView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            Group {
                 switch vm.state {
                 case .loading, .idle:
                     ProgressView("Loading ...")
                 case .failure(let error):
                     failureView(error: error)
                 case .success( let coins ):
+                    if coins.isEmpty {
+                        ContentUnavailableView.search(text: vm.searchText)
+                    }
                     ScrollView {
                         LazyVStack {
                             ForEach(coins) { coin in
-                                CoinRawView(coin: coin)
-                                    .padding(.horizontal)
-                                    .padding(.vertical,6)
+                                NavigationLink(destination: CoinDetailsView(id: coin.id)) {
+                                    CoinRawView(coin: coin)
+                                        .padding(.horizontal)
+                                        .padding(.vertical,6)
+                                }
                             }
                         }
                     }
+                    .searchable(text: $vm.searchText,placement: .navigationBarDrawer)
+                    .task(id: vm.searchText, vm.searchCoinLocally)
                   
                 }
             }

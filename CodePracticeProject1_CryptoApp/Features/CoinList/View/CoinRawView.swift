@@ -59,5 +59,5 @@ struct CoinRawView: View {
 }
 
 #Preview {
-    CoinRawView(coin: Coin(name: "Bitcoin", price: 2515, symbol: "BTC", image: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png",rank: 100, priceChange: 2))
+    CoinRawView(coin: Coin(id: "bitcoin", name: "Bitcoin", price: 2515, symbol: "BTC", image: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png",rank: 100, priceChange: 2))
 }

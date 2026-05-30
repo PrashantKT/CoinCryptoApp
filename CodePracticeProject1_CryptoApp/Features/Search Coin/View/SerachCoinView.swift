@@ -32,9 +32,12 @@ struct SearchCoinView: View {
                         ScrollView {
                             LazyVStack {
                                 ForEach(coins){ coin in
-                                    SearchRowView(coin: coin)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 4)
+                                    NavigationLink(destination: CoinDetailsView(id: coin.id)) {
+                                        
+                                        SearchRowView(coin: coin)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 4)
+                                    }
                                 }
                             }
                         }
