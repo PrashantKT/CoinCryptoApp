@@ -43,3 +43,9 @@ extension CoinDetailsDTO {
         )
     }
 }
+
+extension Coin {
+    func toFavCoin() -> FavCoin {
+        return .init(id: id, name: name, symbol: symbol, image: image)
+    }
+}

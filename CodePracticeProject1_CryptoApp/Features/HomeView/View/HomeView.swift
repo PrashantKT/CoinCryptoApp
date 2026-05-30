@@ -28,7 +28,7 @@ struct HomeView: View {
             }
            
             Tab("Favorite", systemImage: "heart", value: HomeTab.favorite) {
-                Text("Fav")
+                FavoriteList()
 
             }
             Tab("Settings", systemImage: "gear", value: HomeTab.settings) {

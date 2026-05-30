@@ -8,15 +8,11 @@
 import SwiftUI
 import Charts
 
-let tempurl = "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png"
-
-let timeframes = ["24h", "7d", "14d", "30d", "60d", "200d", "1y"]
-let changes = [0.32861, -4.73705, -8.77157, -4.51946, 8.77089, -30.61233, -32.13439]
 struct CoinDetailsView: View {
     
     @State private var expandMore = false
     let id:String
-    let vm =  CoinDetailsFactory.makeViewModel()
+    let vm: CoinDetailsViewModel =  CoinDetailsFactory.makeViewModel()
     
     init(id: String) {
         self.id = id
@@ -45,11 +41,15 @@ struct CoinDetailsView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .padding()
                     .toolbar {
-                        Button("Favorite", systemImage: "heart") {
-                            
+                        Button("Favorite", systemImage: vm.isFav ? "heart.fill" : "heart") {
+                            Task {
+                                await vm.addToFavoritesToggle()
+                            }
                         }
                         .tint(.pink)
                         .buttonStyle(.glass)
+                        .animation(.bouncy, value: vm.isFav)
+
                     }
                 }
             }
@@ -108,13 +108,13 @@ struct CoinDetailsView: View {
     func marketStatus(_ coin: CoinDetails) -> some View {
         VStack {
             HStack {
-                marketStatusCardView(title: "Market cap", value: 2151313513515)
-                marketStatusCardView(title: "24h Volume", value: 21513511311)
+                marketStatusCardView(title: "Market cap", value: coin.market_cap)
+                marketStatusCardView(title: "24h Volume", value: coin.total_volume)
 
             }
             HStack {
-                marketStatusCardView(title: "All time high", value: 73548)
-                marketStatusCardView(title: "All time low", value: 12)
+                marketStatusCardView(title: "All time high", value: coin.allTimeHigh)
+                marketStatusCardView(title: "All time low", value: coin.allTimeLow)
 
             }
         }
@@ -139,7 +139,7 @@ struct CoinDetailsView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Price Change by Timeframe")
                 .font(.headline)
-            
+            let (timeframes, changes) = vm.chartData()
             Chart {
                 ForEach(timeframes.enumerated(), id:\.offset) { id in
                     BarMark(x: .value("Timeframe",id.element),y: .value("Change in %", changes[id.offset]))

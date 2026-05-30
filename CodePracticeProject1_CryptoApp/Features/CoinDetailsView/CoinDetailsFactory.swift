@@ -7,11 +7,15 @@
 
 final class CoinDetailsFactory {
     static func makeViewModel() -> CoinDetailsViewModel {
-        CoinDetailsViewModel(repository:coinDetailsRepo())
+        CoinDetailsViewModel(repository:coinDetailsRepo(),favoritesRepository: FavCoinRepositoryType())
     }
     
     private static func coinDetailsRepo() -> CoinDetailsRepositoryType {
         return CoinRepositoryImpl()
+    }
+    
+    private static func FavCoinRepositoryType() -> FavCoinRepositoryType {
+        return FavRepoImpl()
     }
     
 }
