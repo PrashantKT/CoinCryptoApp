@@ -28,19 +28,23 @@ extension EndPointType {
 enum EndPoint: EndPointType {
     case coinList
     case searchCoin(String)
+    case coinDetails(String)
     
     var path: String {
         switch self {
         case .coinList:
-            return "/coins/markets"
+            return "/coins/markets"             //https://api.coingecko.com/api/v3/coins/markets?ids=bnb,bitcoin&vs_currency=usd
+
         case .searchCoin:
             return "/search"
+        case .coinDetails(let id):
+            return "/coins/\(id)"
         }
     }
     
     var httpMethod: HttpMethod {
         switch self {
-        case .coinList,.searchCoin:
+        case .coinList,.searchCoin,.coinDetails:
             return .GET
         }
     }
@@ -51,6 +55,8 @@ enum EndPoint: EndPointType {
             return [.init(name: "vs_currency", value: "USD")]
         case .searchCoin(let search):
             return [.init(name: "query", value: search)]
+        case .coinDetails:
+            return [.init(name: "localization", value: "false")]
         }
     }
 }

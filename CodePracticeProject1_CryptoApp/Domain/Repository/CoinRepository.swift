@@ -12,3 +12,8 @@ protocol CoinRepositoryType {
 protocol CoinSearchRepositoryType {
     func fetchCoinList(searchText: String) async throws -> [Coin]
 }
+
+protocol CoinDetailsRepositoryType {
+    func fetchCoinDetails(id: String) async throws -> CoinDetails
+}
+

@@ -6,12 +6,15 @@
 //
 
 import Observation
+import Foundation
 
 @Observable
 final class CoinListViewModel {
         
     var repo: CoinRepositoryType
     var state:StateMachine<[Coin],NetworkError> = .idle
+    var searchText = ""
+    private var coins: [Coin] =  []
     init(repo: CoinRepositoryType) {
         self.repo = repo
     }
@@ -21,11 +24,13 @@ final class CoinListViewModel {
         if case .success = state , !force {
             return
         }
-        
+        self.searchText = ""
         state = .loading
         do {
             let coins = try await repo.fetchCoinList()
-            state = .success(coins)
+            self.coins = coins
+            
+            state = .success(self.coins)
         } catch let error as NetworkError {
             print(error)
             state = .failure(error)
@@ -34,16 +39,26 @@ final class CoinListViewModel {
             state = .failure(.unknown)
         }
     }
+    
+    func searchCoinLocally() {
+        guard searchText.isEmpty == false else {
+            if case .success = state {
+                state = .success(self.coins)
+            }
+            return
+        }
+        state = .success(self.coins.filter{$0.name.localizedStandardContains(searchText)})
+    }
 }
 
 extension Array where Element == Coin {
     static func testData() -> [Coin] {
         return [
-            .init(name: "BTC", price: 152, symbol: "btc", image: "tset",rank: 1,priceChange: Double.random(in: 12...51)),
-            .init(name: "Dfef", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
-            .init(name: "Dfgdf", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
-                .init(name: "D", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
-            .init(name: "effD", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
+            .init(id: "bitcoin", name: "BTC", price: 152, symbol: "btc", image: "tset",rank: 1,priceChange: Double.random(in: 12...51)),
+            .init(id: "ethereum", name: "Dfef", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
+            .init(id: "bitcoin", name: "Dfgdf", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
+            .init(id: "bitcoin", name: "D", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
+            .init(id: "bitcoin", name: "effD", price: 152, symbol: "btc", image: "test",rank: 1,priceChange: Double.random(in: 12...51)),
         ]
     }
 }

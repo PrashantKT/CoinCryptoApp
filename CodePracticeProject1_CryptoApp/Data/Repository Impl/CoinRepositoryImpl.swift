@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CoinRepositoryImpl: CoinRepositoryType,CoinSearchRepositoryType {
+final class CoinRepositoryImpl: CoinRepositoryType,CoinSearchRepositoryType, CoinDetailsRepositoryType {
     
     func fetchCoinList() async throws -> [Coin] {
         let apiClient = ApiClient()
@@ -19,6 +19,12 @@ final class CoinRepositoryImpl: CoinRepositoryType,CoinSearchRepositoryType {
         let apiClient = ApiClient()
         let coin:SearchResult = try await apiClient.sendRequest(endPoint: EndPoint.searchCoin(searchText))
         return coin.coins.compactMap{$0.toCoin()}
+    }
+    
+    func fetchCoinDetails(id: String) async throws -> CoinDetails {
+        let apiClient = ApiClient()
+        let coin:CoinDetailsDTO = try await apiClient.sendRequest(endPoint: EndPoint.coinDetails(id))
+        return coin.toCoin()
     }
 }
 

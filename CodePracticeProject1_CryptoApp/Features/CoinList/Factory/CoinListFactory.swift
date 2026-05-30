@@ -12,11 +12,11 @@ final class CoinListFactory {
     }
  
     private static func makeCoinRepo() -> CoinRepositoryType {
-#if DEBUG
-        return MockCoinRepoImpl()
-#else
+//#if DEBUG
+//        return MockCoinRepoImpl()
+//#else
             
             return CoinRepositoryImpl()
-#endif
+//#endif
         }
 }
